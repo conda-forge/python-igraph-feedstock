@@ -23,10 +23,17 @@ requirements:
     - python
     - setuptools
     - toolchain
-
+    - backports.lzma
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
   run:
     - igraph 0.7.1
     - python
+    - backports.lzma
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
 
 test:
   imports:
