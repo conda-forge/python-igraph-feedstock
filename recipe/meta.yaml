@@ -12,21 +12,22 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
   script: python setup.py install --single-version-externally-managed --record record.txt
-  skip : true  # [win]
+  skip : true  # [win or py36]
 
 requirements:
   build:
+    - python
     - igraph 0.7.1
     - pkg-config
-    - python
     - setuptools
     - toolchain
-
+    - icu 58.*
   run:
-    - igraph 0.7.1
     - python
+    - igraph 0.7.1
+    - icu 58.*
 
 test:
   imports:
@@ -36,6 +37,10 @@ test:
     - igraph.remote
     - igraph.test
     - igraph.vendor
+  files:
+    - igraph_test.py
+  require:
+    - python
 
 about:
   home: http://pypi.python.org/pypi/python-igraph
