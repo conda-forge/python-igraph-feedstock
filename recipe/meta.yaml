@@ -12,28 +12,22 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
   script: python setup.py install --single-version-externally-managed --record record.txt
-  skip : true  # [win or py34]
+  skip : true  # [win or py36]
 
 requirements:
   build:
+    - python
     - igraph 0.7.1
     - pkg-config
-    - python
     - setuptools
     - toolchain
-    - backports.lzma
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
+    - icu 58.*
   run:
-    - igraph 0.7.1
     - python
-    - backports.lzma
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
+    - igraph 0.7.1
+    - icu 58.*
 
 test:
   imports:
@@ -53,4 +47,3 @@ about:
 extra:
   recipe-maintainers:
     - sodre
-    - vgauthier
