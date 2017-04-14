@@ -37,6 +37,10 @@ test:
     - igraph.remote
     - igraph.test
     - igraph.vendor
+  files:
+    - igraph_test.py
+  require:
+    - python
 
 about:
   home: http://pypi.python.org/pypi/python-igraph
