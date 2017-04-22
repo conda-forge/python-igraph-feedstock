@@ -26,6 +26,7 @@ requirements:
 
   run:
     - igraph 0.7.1
+    - pycairo >=1.10,<2
     - python
 
 test:
