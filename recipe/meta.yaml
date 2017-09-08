@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 4
   script: python setup.py install --single-version-externally-managed --record record.txt
   skip : true  # [win]
 
@@ -32,6 +32,7 @@ requirements:
 test:
   files:
     - test_cairo.py
+    - test_graphml.py
   imports:
     - igraph
     - igraph.app
@@ -42,6 +43,7 @@ test:
   commands:
     - python -c 'from igraph.test import run_tests; run_tests()'
     - python test_cairo.py
+    - python test_graphml.py
 
 about:
   home: http://pypi.python.org/pypi/python-igraph
