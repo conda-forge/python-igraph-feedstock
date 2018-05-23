@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 4
+  number: 5
   script: python setup.py install --single-version-externally-managed --record record.txt
   skip : true  # [win]
 
@@ -28,6 +28,7 @@ requirements:
     - igraph 0.7.1
     - pycairo >=1.10,<2
     - python
+    - libiconv
 
 test:
   files:
