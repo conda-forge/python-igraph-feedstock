@@ -12,17 +12,18 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 4
+  number: 5
   script: python setup.py install --single-version-externally-managed --record record.txt
   skip : true  # [win]
 
 requirements:
   build:
-    - igraph 0.7.1
     - pkg-config
+    - {{ compiler('c') }}
+  host:
+    - igraph 0.7.1
     - python
     - setuptools
-    - toolchain
 
   run:
     - igraph 0.7.1
