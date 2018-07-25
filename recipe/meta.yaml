@@ -1,6 +1,6 @@
 {% set name = "python-igraph" %}
-{% set version = "0.7.1.post6" %}
-{% set sha256 = "a5ea42790a077eadb3d1e8f82edc47516fea4a2b26bbf52bfc148370fe0fe676" %}
+{% set version = "0.7.1-4" %}
+{% set sha256 = "d3ef12ca9dade73c6df0f6238ebcca1110523d660534f669a18d27d0e91c49d0" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 5
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
   skip : true  # [win]
 
