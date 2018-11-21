@@ -22,7 +22,7 @@ requirements:
   host:
     - igraph 0.7.1
     - python
-    - setuptools
+    - pip
 
   run:
     - igraph 0.7.1
