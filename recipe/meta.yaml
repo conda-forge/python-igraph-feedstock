@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/python-igraph/archive/release-0.7.tar.gz
-  sha256: 34a78ae458f30930f8ad1322d5bc13f3a3d2ef1aece6165717c49b326dcdb810
+  sha256: 420B6C0446C70E849536F328E333CF489D6AD7F75A31E8259EF4512B56AA6D05
 
 build:
   number: 0
