@@ -1,5 +1,5 @@
 {% set name = "python-igraph" %}
-{% set version = "0.7.1.post6" %}
+{% set version = "0.7.1.post7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a5ea42790a077eadb3d1e8f82edc47516fea4a2b26bbf52bfc148370fe0fe676
+  url: https://github.com/igraph/python-igraph/archive/release-0.7.tar.gz
+  sha256: 420b6c0446c70e849536f328e333cf489d6ad7f75a31e8259ef4512b56aa6d05
 
 build:
-  number: 1005
+  number: 0
   script: python -m pip install --no-deps --ignore-installed .
   skip : true  # [win]
 
@@ -54,3 +54,4 @@ about:
 extra:
   recipe-maintainers:
     - sodre
+    - vtraag
