@@ -1,5 +1,5 @@
 {% set name = "python-igraph" %}
-{% set version = "0.7.1.post7" %}
+{% set version = "0.8.0-pre" %}
 
 package:
   name: {{ name|lower }}
