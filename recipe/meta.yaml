@@ -13,7 +13,7 @@ source:
 build:
   number: 0
   script: python -m pip install --no-deps --ignore-installed .
-  skip : true  # [win]
+  skip : true  # [win and vc<14]
 
 requirements:
   build:
@@ -27,8 +27,9 @@ requirements:
     - bison
     - flex
     - libtool
+    - vs2017_{{ target_platform  }}  # [win]
   host:
-    - gmp
+    - gmp # [not win]
     - icu
     - libiconv
     - libxml2
@@ -38,7 +39,7 @@ requirements:
     - python
     - pip
   run:
-    - gmp
+    - gmp # [not win]
     - icu
     - libiconv
     - libxml2
