@@ -29,7 +29,7 @@ requirements:
     - libtool
     - vs2017_{{ target_platform  }}  # [win]
   host:
-    - gmp # [not win]
+    - gmp  # [not win]
     - icu
     - libiconv
     - libxml2
@@ -39,7 +39,7 @@ requirements:
     - python
     - pip
   run:
-    - gmp # [not win]
+    - gmp  # [not win]
     - icu
     - libiconv
     - libxml2
