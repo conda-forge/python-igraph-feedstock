@@ -22,7 +22,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - pkg-config  # [not win]
-    - {{posix}}make
+    - make  # [not win]
     - {{posix}}autoconf
     - automake  # [not win]
     - {{posix}}bison
