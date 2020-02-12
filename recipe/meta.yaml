@@ -22,12 +22,12 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - pkg-config  # [not win]
-    - make  # [not win]
-    - autoconf  # [not win]
+    - {{posix}}make
+    - {{posix}}autoconf
     - automake  # [not win]
     - {{posix}}bison
     - {{posix}}flex
-    - libtool  # [not win]
+    - {{posix}}libtool
     - vs2017_{{ target_platform  }}  # [win]
     - posix  # [win]
     - m2w64-toolchain  # [win]
