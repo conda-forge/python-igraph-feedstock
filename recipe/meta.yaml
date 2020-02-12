@@ -28,6 +28,8 @@ requirements:
     - flex
     - libtool
     - vs2017_{{ target_platform  }}  # [win]
+    - posix  # [win]
+    - m2w64-toolchain  # [win]
   host:
     - gmp  # [not win]
     - icu
