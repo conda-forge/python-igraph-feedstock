@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: python -m pip install --no-deps --ignore-installed .  # [not win]
   skip : true  # [win and vc<14]
 
 requirements:
@@ -20,33 +20,33 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
-    - pkg-config
-    - make
-    - automake
-    - autoconf
-    - bison
-    - flex
-    - libtool
+    - pkg-config  # [not win]
+    - make  # [not win]
+    - automake  # [not win]
+    - autoconf  # [not win]
+    - bison  # [not win]
+    - flex  # [not win]
+    - libtool  # [not win]
     - vs2017_{{ target_platform  }}  # [win]
     - posix  # [win]
     - m2w64-toolchain  # [win]
   host:
     - gmp  # [not win]
-    - icu
-    - libiconv
-    - libxml2
-    - xz
-    - zlib
+    - icu  # [not win]
+    - libiconv  # [not win]
+    - libxml2  # [not win]
+    - xz  # [not win]
+    - zlib  # [not win]
     - texttable >=1.6.2
     - python
     - pip
   run:
     - gmp  # [not win]
-    - icu
-    - libiconv
-    - libxml2
-    - xz
-    - zlib
+    - icu  # [not win]
+    - libiconv  # [not win]
+    - libxml2  # [not win]
+    - xz  # [not win]
+    - zlib  # [not win]
     - texttable >=1.6.2
     - pycairo >=1.10,<2
     - python
