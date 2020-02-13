@@ -31,7 +31,7 @@ requirements:
     - vs2017_{{ target_platform  }}  # [win]
     - posix  # [win]
     - m2w64-toolchain  # [win]
-    - m2-automake1.15  # [win]
+    - m2-automake-wrapper  # [win]
   host:
     - gmp  # [not win]
     - icu  # [not win]
