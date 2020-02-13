@@ -1,5 +1,5 @@
 diff --git a/setup.py b/setup.py
-index 5e6f878..36ad165 100644
+index 5e6f878..08ac42e 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -272,7 +272,7 @@ class IgraphCCoreBuilder(object):
@@ -11,17 +11,15 @@ index 5e6f878..36ad165 100644
                  if retcode:
                      return False
  
-@@ -296,8 +296,8 @@ class IgraphCCoreBuilder(object):
+@@ -296,7 +296,7 @@ class IgraphCCoreBuilder(object):
              if "IGRAPH_EXTRA_CONFIGURE_ARGS" in os.environ:
                  configure_args.extend(os.environ["IGRAPH_EXTRA_CONFIGURE_ARGS"].split(" "))
              retcode = subprocess.call(
 -                "sh {0} {1}".format(
--                    quote_path_for_shell(os.path.join(source_folder, "configure")),
 +                "bash -l  \"{0} {1}\"".format(
-+                    quote_path_for_shell(os.path.join(source_folder, "configure)),
+                     quote_path_for_shell(os.path.join(source_folder, "configure")),
                      " ".join(configure_args)
                  ),
-                 env=self.enhanced_env(CFLAGS="-fPIC", CXXFLAGS="-fPIC"),
 @@ -307,10 +307,10 @@ class IgraphCCoreBuilder(object):
                  return False
  
