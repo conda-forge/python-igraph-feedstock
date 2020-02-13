@@ -1,0 +1,71 @@
+diff --git a/setup.py b/setup.py
+index 5e6f878..27c48e8 100644
+--- a/setup.py
++++ b/setup.py
+@@ -272,7 +272,7 @@ class IgraphCCoreBuilder(object):
+             # Github
+             if os.path.isfile("bootstrap.sh") and not os.path.isfile("configure"):
+                 print("Bootstrapping igraph...")
+-                retcode = subprocess.call("sh bootstrap.sh", shell=True)
++                retcode = subprocess.call("bash -l \"bootstrap.sh\"", shell=True)
+                 if retcode:
+                     return False
+
+@@ -297,7 +297,7 @@ class IgraphCCoreBuilder(object):
+                 configure_args.extend(os.environ["IGRAPH_EXTRA_CONFIGURE_ARGS"].split(" "))
+             retcode = subprocess.call(
+                 "sh {0} {1}".format(
+-                    quote_path_for_shell(os.path.join(source_folder, "configure")),
++                    quote_path_for_shell(os.path.join(source_folder, "bash -l \"./configure\"")),
+                     " ".join(configure_args)
+                 ),
+                 env=self.enhanced_env(CFLAGS="-fPIC", CXXFLAGS="-fPIC"),
+@@ -307,10 +307,10 @@ class IgraphCCoreBuilder(object):
+                 return False
+
+             building_on_windows = platform.system() == "Windows"
+-
++
+             if building_on_windows:
+                 print("Creating Microsoft Visual Studio project...")
+-                retcode = subprocess.call("make msvc", shell=True)
++                retcode = subprocess.call("bash -l \"make msvc\"", shell=True)
+                 if retcode:
+                     return False
+
+@@ -360,7 +360,7 @@ class IgraphCCoreBuilder(object):
+         self, source_folder, build_folder, install_folder, libraries
+     ):
+         building_on_windows = platform.system() == "Windows"
+-
++
+         create_dir_unless_exists(install_folder)
+
+         ensure_dir_does_not_exist(install_folder, "include")
+@@ -504,7 +504,7 @@ class BuildConfiguration(object):
+                     buildcfg.library_dirs = list(
+                         os.environ["IGRAPH_EXTRA_LIBRARY_PATH"].split(os.pathsep)
+                     ) + buildcfg.library_dirs
+-
++
+                 # Replaces library names with full paths to static libraries
+                 # where possible. libm.a is excluded because it caused problems
+                 # on Sabayon Linux where libm.a is probably not compiled with
+@@ -689,7 +689,7 @@ class BuildConfiguration(object):
+         """Replaces references to libraries with full paths to their static
+         versions if the static version is to be found on the library path."""
+         building_on_windows = platform.system() == "Windows"
+-
++
+         if not building_on_windows and "stdc++" not in self.libraries:
+             self.libraries.append("stdc++")
+
+@@ -709,7 +709,7 @@ class BuildConfiguration(object):
+         """Assumes that igraph is installed already in ``vendor/install/igraph`` and sets up
+         the include and library paths and the library names accordingly."""
+         building_on_windows = platform.system() == "Windows"
+-
++
+         buildcfg.include_dirs = [os.path.join("vendor", "install", "igraph", "include")]
+         buildcfg.library_dirs = [os.path.join("vendor", "install", "igraph", "lib")]
+         if not buildcfg.static_extension:
