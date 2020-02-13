@@ -1,6 +1,6 @@
 {% set name = "python-igraph" %}
 {% set version = "0.8.0" %}
-{% set posix = 'm2-' if win else '' %}
+{% set m2 = 'm2-' if win else '' %}
 
 package:
   name: {{ name|lower }}
@@ -25,15 +25,17 @@ requirements:
     - {{ compiler('fortran') }}
     - pkg-config  # [not win]
     - make  # [not win]
-    - {{posix}}autoconf
+    - {{m2}}autoconf
     - automake  # [not win]
-    - {{posix}}bison
-    - {{posix}}flex
-    - {{posix}}libtool
+    - {{m2}}bison
+    - {{m2}}flex
+    - {{m2}}libtool
     - vs2017_{{ target_platform  }}  # [win]
-    - posix  # [win]
-    - m2w64-toolchain  # [win]
+    - m2-bash  # [win]
     - m2-automake-wrapper  # [win]
+    - m2-sed  # [win]
+    - m2-which  # [win]
+    - m2-grep  # [win]
   host:
     - gmp  # [not win]
     - icu  # [not win]
