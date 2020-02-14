@@ -67,7 +67,7 @@ test:
   commands:
     - python -m unittest
     - python test_cairo.py
-    - python test_graphml.py
+    - python test_graphml.py  # [not win]
 
 about:
   home: http://pypi.python.org/pypi/python-igraph
