@@ -58,7 +58,7 @@ test:
     - tests
   files:
     - test_cairo.py
-    - test_graphml.py
+    - test_graphml.py  # [not win]
   imports:
     - igraph
     - igraph.app
