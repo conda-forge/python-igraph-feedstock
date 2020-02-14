@@ -1,6 +1,6 @@
 {% set name = "python-igraph" %}
 {% set version = "0.8.0" %}
-{% set m2 = 'm2-' if win else '' %}
+{% set posix = 'm2-' if win else '' %}
 
 package:
   name: {{ name|lower }}
@@ -10,8 +10,6 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 47e6bb48ec7dbfddbd89cf064a24b271783a1490fc688ebce17fbd652bcdab8e
-  patches:
-    - 0001-correct-setup.patch  # [win]
 
 build:
   number: 0
@@ -25,17 +23,15 @@ requirements:
     - {{ compiler('fortran') }}
     - pkg-config  # [not win]
     - make  # [not win]
-    - {{m2}}autoconf
+    - {{posix}}autoconf
     - automake  # [not win]
-    - {{m2}}bison
-    - {{m2}}flex
-    - {{m2}}libtool
+    - {{posix}}bison
+    - {{posix}}flex
+    - {{posix}}libtool
     - vs2017_{{ target_platform  }}  # [win]
-    - m2-bash  # [win]
+    - posix  # [win]
+    - m2w64-toolchain  # [win]
     - m2-automake-wrapper  # [win]
-    - m2-sed  # [win]
-    - m2-which  # [win]
-    - m2-grep  # [win]
   host:
     - gmp  # [not win]
     - icu  # [not win]
