@@ -1,5 +1,6 @@
 {% set name = "python-igraph" %}
-{% set version = "0.7.1.post7" %}
+{% set version = "0.8.0" %}
+{% set posix = 'm2-' if win else '' %}
 
 package:
   name: {{ name|lower }}
@@ -7,43 +8,66 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/igraph/python-igraph/archive/release-0.7.tar.gz
-  sha256: 420b6c0446c70e849536f328e333cf489d6ad7f75a31e8259ef4512b56aa6d05
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 47e6bb48ec7dbfddbd89cf064a24b271783a1490fc688ebce17fbd652bcdab8e
 
 build:
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
-  skip : true  # [win]
+  script: python -m pip install --no-deps --ignore-installed .  # [not win]
+  skip : true  # [win and vc<14]
 
 requirements:
   build:
-    - pkg-config
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
+    - pkg-config  # [not win]
+    - make  # [not win]
+    - {{posix}}autoconf
+    - automake  # [not win]
+    - {{posix}}bison
+    - {{posix}}flex
+    - {{posix}}libtool
+    - vs2017_{{ target_platform  }}  # [win]
+    - posix  # [win]
+    - m2w64-toolchain  # [win]
+    - m2-automake-wrapper  # [win]
   host:
-    - igraph 0.7.1
+    - gmp  # [not win]
+    - icu  # [not win]
+    - libiconv  # [not win]
+    - libxml2  # [not win]
+    - xz  # [not win]
+    - zlib  # [not win]
+    - texttable >=1.6.2
     - python
     - pip
-
   run:
-    - igraph 0.7.1
+    - gmp  # [not win]
+    - icu  # [not win]
+    - libiconv  # [not win]
+    - libxml2  # [not win]
+    - xz  # [not win]
+    - zlib  # [not win]
+    - texttable >=1.6.2
     - pycairo >=1.10,<2
     - python
 
 test:
+  source_files:
+    - tests
   files:
     - test_cairo.py
-    - test_graphml.py
+    - test_graphml.py  # [not win]
   imports:
     - igraph
     - igraph.app
     - igraph.drawing
     - igraph.remote
-    - igraph.test
-    - igraph.vendor
   commands:
-    - python -c 'from igraph.test import run_tests; run_tests()'
+    - python -m unittest
     - python test_cairo.py
-    - python test_graphml.py
+    - python test_graphml.py  # [not win]
 
 about:
   home: http://pypi.python.org/pypi/python-igraph
