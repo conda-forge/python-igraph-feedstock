@@ -10,40 +10,20 @@ fortran_compiler:
 - flang
 fortran_compiler_version:
 - '5'
-icu:
-- '64.2'
-libiconv:
-- '1.15'
-libxml2:
-- '2.9'
 pin_run_as_build:
-  icu:
-    max_pin: x
-  libiconv:
-    max_pin: x.x
-  libxml2:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
   vc:
     max_pin: x
-  xz:
-    max_pin: x.x
-  zlib:
-    max_pin: x.x
 python:
-- '3.6'
+- 3.7.* *_cpython
 target_platform:
 - win-64
 vc:
 - '14'
-xz:
-- '5.2'
 zip_keys:
-- - python
-  - vc
-  - c_compiler
+- - c_compiler
   - cxx_compiler
-zlib:
-- '1.2'
+  - python
+  - vc
