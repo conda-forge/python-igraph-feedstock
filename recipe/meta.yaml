@@ -72,9 +72,11 @@ test:
     - python test_graphml.py  # [not win]
 
 about:
-  home: http://pypi.python.org/pypi/python-igraph
+  home: https://igraph.org/python/
   license: GPL
-  license_file: COPYING
+  license_file:
+    - COPYING
+    - vendor/source/igraph/ACKNOWLEDGEMENTS.md
   summary: High performance graph data structures and algorithms
 
 extra:
