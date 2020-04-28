@@ -1,7 +1,7 @@
-diff --git a/msvc/include/config.h b/msvc/include/config.h
+diff --git a/vendor/source/igraph/msvc/include/config.h b/vendor/source/igraph/msvc/include/config.h
 index b4f07f49..e967bddb 100644
---- a/msvc/include/config.h
-+++ b/msvc/include/config.h
+--- a/vendor/source/igraph/msvc/include/config.h
++++ b/vendor/source/igraph/msvc/include/config.h
 @@ -5,7 +5,9 @@
  /* #undef HAVE_DLFCN_H */
  
@@ -13,10 +13,10 @@ index b4f07f49..e967bddb 100644
  
  /* Define to 1 if you have the `fabsl' function. */
  #define HAVE_FABSL 1
-diff --git a/src/plfit/platform.h b/src/plfit/platform.h
+diff --git a/vendor/source/igraph/src/plfit/platform.h b/vendor/source/igraph/src/plfit/platform.h
 index c98b8882..5ace053c 100644
---- a/src/plfit/platform.h
-+++ b/src/plfit/platform.h
+--- a/vendor/source/igraph/src/plfit/platform.h
++++ b/vendor/source/igraph/src/plfit/platform.h
 @@ -34,7 +34,7 @@
  
  __BEGIN_DECLS
