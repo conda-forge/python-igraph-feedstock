@@ -10,6 +10,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 780fe30d2413fd1123215d7ef53b9d00abe47ae91912b188b5a5ed1aad528174
+  patches:
+    - patches/0001-correct-msvc-build.patch
 
 build:
   number: 0
