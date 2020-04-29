@@ -1,5 +1,5 @@
 {% set name = "python-igraph" %}
-{% set version = "0.8.0" %}
+{% set version = "0.8.1" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,12 +9,14 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 47e6bb48ec7dbfddbd89cf064a24b271783a1490fc688ebce17fbd652bcdab8e
+  sha256: 780fe30d2413fd1123215d7ef53b9d00abe47ae91912b188b5a5ed1aad528174
+  patches:
+    - patches/0001-correct-msvc-build.patch
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv  # [not win]
-  skip : true  # [win and vc<14]
+  skip: true   # [win and vc<14]
 
 requirements:
   build:
@@ -23,12 +25,12 @@ requirements:
     - {{ compiler('fortran') }}
     - pkg-config  # [not win]
     - make  # [not win]
-    - {{posix}}autoconf
+    - {{ posix }}autoconf
     - automake  # [not win]
-    - {{posix}}bison
-    - {{posix}}flex
-    - {{posix}}libtool
-    - vs2017_{{ target_platform  }}  # [win]
+    - {{ posix }}bison
+    - {{ posix }}flex
+    - {{ posix }}libtool
+    - vs2017_{{ target_platform }}  # [win]
     - posix  # [win]
     - m2w64-toolchain  # [win]
     - m2-automake-wrapper  # [win]
@@ -70,10 +72,12 @@ test:
     - python test_graphml.py  # [not win]
 
 about:
-  home: http://pypi.python.org/pypi/python-igraph
-  license: GPL
-  license_file: COPYING
-  summary: 'High performance graph data structures and algorithms'
+  home: https://igraph.org/python/
+  license: GPL-2.0-or-later
+  license_file:
+    - COPYING
+    - vendor/source/igraph/ACKNOWLEDGEMENTS.md
+  summary: High performance graph data structures and algorithms
 
 extra:
   recipe-maintainers:
