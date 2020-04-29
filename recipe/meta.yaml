@@ -73,7 +73,7 @@ test:
 
 about:
   home: https://igraph.org/python/
-  license: GPL
+  license: GPL-2.0-or-later
   license_file:
     - COPYING
     - vendor/source/igraph/ACKNOWLEDGEMENTS.md
