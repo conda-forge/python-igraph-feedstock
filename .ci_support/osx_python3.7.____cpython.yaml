@@ -19,7 +19,7 @@ fortran_compiler_version:
 gmp:
 - '6'
 icu:
-- '64.2'
+- '67'
 libiconv:
 - '1.15'
 libxml2:

@@ -1,9 +1,9 @@
 About python-igraph
 ===================
 
-Home: http://pypi.python.org/pypi/python-igraph
+Home: https://igraph.org/python/
 
-Package license: GPL
+Package license: GPL-2.0-or-later
 
 Feedstock license: BSD 3-Clause
 
