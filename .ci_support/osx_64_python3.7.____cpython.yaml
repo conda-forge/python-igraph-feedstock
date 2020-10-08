@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '9'
+- '10'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,27 +11,23 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '9'
+- '10'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '7'
+- '7.5'
 gmp:
 - '6'
 icu:
 - '67'
 libiconv:
-- '1.15'
+- '1.16'
 libxml2:
 - '2.9'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 pin_run_as_build:
   gmp:
-    max_pin: x
-  icu:
     max_pin: x
   libiconv:
     max_pin: x.x
@@ -46,6 +42,8 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.7.* *_cpython
+target_platform:
+- osx-64
 xz:
 - '5.2'
 zlib:
