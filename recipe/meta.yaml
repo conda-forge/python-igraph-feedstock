@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv --use-pkg-config
+  script: {{ PYTHON }} -m pip install . --no-deps -vv --install-option="--use-pkg-config"
   skip: true  # [win and vc<14]
 
 requirements:
