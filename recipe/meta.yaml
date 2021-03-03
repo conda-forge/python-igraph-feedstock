@@ -1,6 +1,5 @@
 {% set name = "python-igraph" %}
 {% set version = "0.9.0" %}
-{% set posix = 'm2-' if win else '' %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +12,7 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv  # [not win]
+  script: {{ PYTHON }} -m pip install . --no-deps -vv --use-pkg-config
   skip: true  # [win and vc<14]
 
 requirements:
@@ -21,35 +20,11 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
-    - pkg-config  # [not win]
-    - make  # [not win]
-    - {{ posix }}autoconf
-    - automake  # [not win]
-    - {{ posix }}bison
-    - {{ posix }}flex
-    - {{ posix }}libtool
-    - vs2017_{{ target_platform }}  # [win]
-    - posix  # [win]
-    - m2w64-toolchain  # [win]
-    - m2-automake-wrapper  # [win]
   host:
-    - gmp  # [not win]
-    - icu  # [not win]
-    - libiconv  # [not win]
-    - libxml2  # [not win]
-    - xz  # [not win]
-    - zlib  # [not win]
-    - texttable >=1.6.2
+    - igraph
     - python
-    - pip
   run:
-    - gmp  # [not win]
-    - icu  # [not win]
-    - libiconv  # [not win]
-    - libxml2  # [not win]
-    - xz  # [not win]
-    - zlib  # [not win]
-    - texttable >=1.6.2
+    - igraph
     - pycairo >=1.10,<2
     - python
 
@@ -58,7 +33,7 @@ test:
     - tests
   files:
     - test_cairo.py
-    - test_graphml.py  # [not win]
+    - test_graphml.py
   imports:
     - igraph
     - igraph.app
@@ -67,7 +42,7 @@ test:
   commands:
     - python -m unittest
     - python test_cairo.py
-    - python test_graphml.py  # [not win]
+    - python test_graphml.py
 
 about:
   home: https://igraph.org/python/
