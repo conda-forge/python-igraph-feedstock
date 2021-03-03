@@ -23,6 +23,8 @@ requirements:
   host:
     - igraph
     - python
+    - pip
+    - setuptools
   run:
     - igraph
     - pycairo >=1.10,<2
