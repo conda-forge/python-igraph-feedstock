@@ -18,6 +18,7 @@ set IGRAPH_CMAKE_EXTRA_ARGS=%CMAKE_ARGS%^
       -DIGRAPH_ENABLE_LTO=1 ^
       -DIGRAPH_ENABLE_TLS=1 ^
       -DIGRAPH_GRAPHML_SUPPORT=1
+set IGRAPH_EXTRA_LIBRARIES=libxml2,libblas,liblapack,glpk,cxsparse,gmp
 
 python -m pip install --no-deps --ignore-installed .
 if errorlevel 1 exit 1
