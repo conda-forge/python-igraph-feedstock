@@ -41,6 +41,8 @@ requirements:
     - mpir  # [win]
     - libblas
     - liblapack
+    - python
+    - pip
   run:
     - glpk
     - libxml2
