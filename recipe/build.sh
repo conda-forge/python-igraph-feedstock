@@ -20,7 +20,6 @@ export IGRAPH_CMAKE_EXTRA_ARGS="
     -DBUILD_SHARED_LIBS=off \
     -DIGRAPH_ENABLE_LTO=1 \
     -DIGRAPH_ENABLE_TLS=1 \
-    -DBUILD_SHARED_LIBS=on \
     -DBLAS_LIBRARIES=\"${PREFIX}/lib/libblas${SHLIB_EXT}\" \
     -DLAPACK_LIBRARIES=\"${PREFIX}/lib/liblapack${SHLIB_EXT}\"
     "
