@@ -1,5 +1,5 @@
 {% set name = "python-igraph" %}
-{% set version = "0.8.3" %}
+{% set version = "0.9.1" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e1f27622eddeb2bd5fdcbadb41ef048e884790bb050f9627c086dc609d0f1236
+  sha256: f1895a83c57180f03c50fb77334a4d5029327aefee14f03381e10d34a1794410
 
 build:
-  number: 3
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv  # [not win]
   skip: true  # [win and vc<14]
 
