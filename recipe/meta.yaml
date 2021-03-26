@@ -1,6 +1,5 @@
 {% set name = "python-igraph" %}
 {% set version = "0.9.1" %}
-{% set posix = 'm2-' if win else '' %}
 
 package:
   name: {{ name|lower }}
@@ -13,42 +12,42 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv  # [not win]
   skip: true  # [win and vc<14]
+  script_env:
+    - INTERNAL_ARPACK=0
+    - INTERNAL_ARPACK=1  # [arm64]
+    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
+
+  run_exports:
+    - {{ pin_subpackage("python-igraph", max_pin="x.x") }}
 
 requirements:
   build:
+    - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
-    - pkg-config  # [not win]
-    - make  # [not win]
-    - {{ posix }}autoconf
-    - automake  # [not win]
-    - {{ posix }}bison
-    - {{ posix }}flex
-    - {{ posix }}libtool
     - vs2017_{{ target_platform }}  # [win]
-    - posix  # [win]
-    - m2w64-toolchain  # [win]
-    - m2-automake-wrapper  # [win]
+    - cmake
+    - ninja
+    - make  # [not win]
+    - python  # [win]
+    - pkg-config  # [not win]
   host:
+    - glpk
+    - libxml2
+    - suitesparse
+    - arpack   # [not arm64]
     - gmp  # [not win]
-    - icu  # [not win]
-    - libiconv  # [not win]
-    - libxml2  # [not win]
-    - xz  # [not win]
-    - zlib  # [not win]
-    - texttable >=1.6.2
-    - python
-    - pip
+    - mpir  # [win]
+    - libblas
+    - liblapack
   run:
+    - glpk
+    - libxml2
+    - suitesparse
+    - arpack  # [not arm64]
     - gmp  # [not win]
-    - icu  # [not win]
-    - libiconv  # [not win]
-    - libxml2  # [not win]
-    - xz  # [not win]
-    - zlib  # [not win]
+    - mpir  # [win]
     - texttable >=1.6.2
     - pycairo >=1.10,<2
     - python
