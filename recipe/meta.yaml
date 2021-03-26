@@ -30,8 +30,8 @@ requirements:
     - cmake
     - ninja
     - make  # [not win]
-    - python  # [win]
     - pkg-config  # [not win]
+    - pip
   host:
     - glpk
     - libxml2
@@ -42,7 +42,6 @@ requirements:
     - libblas
     - liblapack
     - python
-    - pip
   run:
     - glpk
     - libxml2
