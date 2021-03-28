@@ -55,9 +55,6 @@ requirements:
 test:
   source_files:
     - tests
-  files:
-    - test_cairo.py
-    - test_graphml.py  # [not win]
   imports:
     - igraph
     - igraph.app
@@ -65,8 +62,6 @@ test:
     - igraph.remote
   commands:
     - python -m unittest
-    - python test_cairo.py
-    - python test_graphml.py  # [not win]
 
 about:
   home: https://igraph.org/python/
