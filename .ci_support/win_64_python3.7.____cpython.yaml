@@ -1,5 +1,3 @@
-arpack:
-- '3.7'
 c_compiler:
 - vs2017
 channel_sources:
@@ -17,8 +15,6 @@ liblapack:
 libxml2:
 - '2.9'
 pin_run_as_build:
-  arpack:
-    max_pin: x.x.x
   glpk:
     max_pin: x.x
   libxml2:
