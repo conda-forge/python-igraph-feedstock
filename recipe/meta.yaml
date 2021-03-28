@@ -35,7 +35,7 @@ requirements:
     - glpk
     - libxml2
     - suitesparse
-    - arpack   # [not arm64]
+    - arpack   # [not arm64 and not win]
     - gmp  # [not win]
     - mpir  # [win]
     - libblas
@@ -46,11 +46,10 @@ requirements:
     - glpk
     - libxml2
     - suitesparse
-    - arpack  # [not arm64]
+    - arpack  # [not arm64 and not win]
     - gmp  # [not win]
     - mpir  # [win]
     - texttable >=1.6.2
-    - pycairo >=1.10,<2
     - python
 
 test:
