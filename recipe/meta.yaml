@@ -1,6 +1,5 @@
 {% set name = "python-igraph" %}
-{% set version = "0.8.3" %}
-{% set posix = 'm2-' if win else '' %}
+{% set version = "0.9.1" %}
 
 package:
   name: {{ name|lower }}
@@ -9,56 +8,55 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e1f27622eddeb2bd5fdcbadb41ef048e884790bb050f9627c086dc609d0f1236
+  sha256: f1895a83c57180f03c50fb77334a4d5029327aefee14f03381e10d34a1794410
+  patches:
+    - 0001-test-print-index-of-graph-when-hub-or-authority-scor.patch
 
 build:
-  number: 3
-  script: {{ PYTHON }} -m pip install . --no-deps -vv  # [not win]
+  number: 0
   skip: true  # [win and vc<14]
+  script_env:
+    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
+
+  run_exports:
+    - {{ pin_subpackage("python-igraph", max_pin="x.x") }}
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
-    - pkg-config  # [not win]
-    - make  # [not win]
-    - {{ posix }}autoconf
-    - automake  # [not win]
-    - {{ posix }}bison
-    - {{ posix }}flex
-    - {{ posix }}libtool
     - vs2017_{{ target_platform }}  # [win]
-    - posix  # [win]
-    - m2w64-toolchain  # [win]
-    - m2-automake-wrapper  # [win]
+    - cmake
+    - ninja
+    - make  # [not win]
+    - pkg-config  # [not win]
   host:
+    - glpk
+    - libxml2
+    - suitesparse
+    - arpack   # [not win]
     - gmp  # [not win]
-    - icu  # [not win]
-    - libiconv  # [not win]
-    - libxml2  # [not win]
-    - xz  # [not win]
-    - zlib  # [not win]
-    - texttable >=1.6.2
+    - mpir  # [win]
+    - libblas
+    - liblapack
     - python
     - pip
   run:
+    - glpk
+    - libxml2
+    - suitesparse
+    - arpack  # [not win]
     - gmp  # [not win]
-    - icu  # [not win]
-    - libiconv  # [not win]
-    - libxml2  # [not win]
-    - xz  # [not win]
-    - zlib  # [not win]
+    - mpir  # [win]
     - texttable >=1.6.2
-    - pycairo >=1.10,<2
     - python
 
 test:
   source_files:
     - tests
-  files:
-    - test_cairo.py
-    - test_graphml.py  # [not win]
   imports:
     - igraph
     - igraph.app
@@ -66,8 +64,6 @@ test:
     - igraph.remote
   commands:
     - python -m unittest
-    - python test_cairo.py
-    - python test_graphml.py  # [not win]
 
 about:
   home: https://igraph.org/python/
