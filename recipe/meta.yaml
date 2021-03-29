@@ -16,8 +16,6 @@ build:
   number: 0
   skip: true  # [win and vc<14]
   script_env:
-    - INTERNAL_ARPACK=0
-    - INTERNAL_ARPACK=1  # [arm64]
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
   run_exports:
@@ -39,7 +37,7 @@ requirements:
     - glpk
     - libxml2
     - suitesparse
-    - arpack   # [not arm64 and not win]
+    - arpack   # [not win]
     - gmp  # [not win]
     - mpir  # [win]
     - libblas
@@ -50,7 +48,7 @@ requirements:
     - glpk
     - libxml2
     - suitesparse
-    - arpack  # [not arm64 and not win]
+    - arpack  # [not win]
     - gmp  # [not win]
     - mpir  # [win]
     - texttable >=1.6.2
