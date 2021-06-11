@@ -1,5 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
+arpack:
+- '3.7'
 c_compiler:
 - clang
 c_compiler_version:
@@ -25,6 +27,8 @@ libxml2:
 macos_machine:
 - arm64-apple-darwin20.0.0
 pin_run_as_build:
+  arpack:
+    max_pin: x.x.x
   glpk:
     max_pin: x.x
   gmp:
