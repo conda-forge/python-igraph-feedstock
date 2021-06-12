@@ -1,5 +1,5 @@
 {% set name = "python-igraph" %}
-{% set version = "0.9.1" %}
+{% set version = "0.9.6" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f1895a83c57180f03c50fb77334a4d5029327aefee14f03381e10d34a1794410
+  sha256: 1824ca0489068100534d717056395d580b2d19bf4fefb378465e6a37a20bf316
   patches:
     - 0001-test-print-index-of-graph-when-hub-or-authority-scor.patch
 
