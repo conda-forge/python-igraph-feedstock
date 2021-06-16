@@ -9,8 +9,6 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: b1e4e3b8ea438f85e17874d0b0836107b437ebe68ae0b3be13d2ad399f45405d
-  patches:
-    - 0001-test-print-index-of-graph-when-hub-or-authority-scor.patch
 
 build:
   number: 0
