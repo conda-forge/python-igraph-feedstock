@@ -24,4 +24,6 @@ export IGRAPH_CMAKE_EXTRA_ARGS="
     -DLAPACK_LIBRARIES=\"${PREFIX}/lib/liblapack${SHLIB_EXT}\"
     "
 
+echo $IGRAPH_CMAKE_EXTRA_ARGS
+
 ${PYTHON} -m pip install --no-deps --ignore-installed . -vvv
