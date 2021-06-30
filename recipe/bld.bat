@@ -10,9 +10,6 @@ set IGRAPH_CMAKE_EXTRA_ARGS=%CMAKE_ARGS%^
       -DCMAKE_INSTALL_LIBDIR=lib ^
       -DCMAKE_INSTALL_INCLUDEDIR=include ^
       -DCMAKE_INSTALL_PREFIX=%SRC_DIR%/vendor/install/igraph ^
-      -DCMAKE_C_FLAGS=^"%CFLAGS%^" \
-      -DCMAKE_CPP_FLAGS=^"%CPPFLAGS%^" \
-      -DCMAKE_CXX_FLAGS=^"%CXXFLAGS%^" \
       -DCMAKE_POSITION_INDEPENDENT_CODE=on ^
       -DIGRAPH_USE_INTERNAL_BLAS=0 ^
       -DIGRAPH_USE_INTERNAL_LAPACK=0 ^
@@ -25,8 +22,6 @@ set IGRAPH_CMAKE_EXTRA_ARGS=%CMAKE_ARGS%^
       -DIGRAPH_ENABLE_TLS=1 ^
       -DIGRAPH_GRAPHML_SUPPORT=1
 set IGRAPH_EXTRA_LIBRARIES=gmp,blas,cxsparse,glpk,lapack,libxml2
-
-echo %IGRAPH_CMAKE_EXTRA_ARGS%
 
 %PYTHON% -m pip install --no-deps --ignore-installed . -vvv
 if errorlevel 1 exit 1
