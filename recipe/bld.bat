@@ -26,5 +26,7 @@ set IGRAPH_CMAKE_EXTRA_ARGS=%CMAKE_ARGS%^
       -DIGRAPH_GRAPHML_SUPPORT=1
 set IGRAPH_EXTRA_LIBRARIES=gmp,blas,cxsparse,glpk,lapack,libxml2
 
+echo %IGRAPH_CMAKE_EXTRA_ARGS%
+
 %PYTHON% -m pip install --no-deps --ignore-installed . -vvv
 if errorlevel 1 exit 1
