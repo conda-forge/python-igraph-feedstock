@@ -67,7 +67,7 @@ about:
   home: https://igraph.org/python/
   license: GPL-2.0-or-later
   license_file:
-    - COPYING
+    - LICENSE
     - vendor/source/igraph/ACKNOWLEDGEMENTS.md
   summary: High performance graph data structures and algorithms
 
