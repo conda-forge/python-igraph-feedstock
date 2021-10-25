@@ -1,5 +1,5 @@
 {% set name = "python-igraph" %}
-{% set version = "0.9.6" %}
+{% set version = "0.9.7" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1824ca0489068100534d717056395d580b2d19bf4fefb378465e6a37a20bf316
+  sha256: 832e9c6fe8a36886399f0c97fb1f7f75350df0b79e089d96c4b9ff86b2058dd3
 
 build:
   number: 0
@@ -67,7 +67,7 @@ about:
   home: https://igraph.org/python/
   license: GPL-2.0-or-later
   license_file:
-    - COPYING
+    - LICENSE
     - vendor/source/igraph/ACKNOWLEDGEMENTS.md
   summary: High performance graph data structures and algorithms
 
