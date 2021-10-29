@@ -1,5 +1,5 @@
 {% set name = "python-igraph" %}
-{% set pypi-name = "igraph" %}
+{% set pypiname = "igraph" %}
 {% set version = "0.9.8" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ pypi-name }}/{{ pypi-name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
   sha256: e7bad9f5f52e6dc3ccdaa3d02d8ec433d9ada704f7a83168915cfa0c4c226730
 
 build:
