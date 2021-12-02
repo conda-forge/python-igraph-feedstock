@@ -12,14 +12,15 @@ index 546a283..d8f2fdb 100644
  
                  try:
                      ec, eval = g.evcent(return_eigenvalue=True)
-@@ -156,14 +153,17 @@ class AtlasTestBase:
+@@ -156,14 +153,18 @@ class AtlasTestBase:
  
  class GraphAtlasTests(unittest.TestCase, AtlasTestBase):
      graphs = [Graph.Atlas(i) for i in range(1253)]
 -    skip_graphs = set([180])
  
 +# Skip some problematic graphs
-+GraphAtlasTests.graphs = [g for idx, g in enumerate(GraphAtlasTests.graphs) if idx not in set([180])]
++GraphAtlasTests.graphs = [g for idx, g in enumerate(GraphAtlasTests.graphs) if idx not in set([70, 180])]
++print(len(GraphAtlasTests.graphs))
  
  class IsoclassTests(unittest.TestCase, AtlasTestBase):
      graphs = [Graph.Isoclass(3, i, directed=True) for i in range(16)] + [
@@ -28,7 +29,7 @@ index 546a283..d8f2fdb 100644
 -    skip_graphs = set([136])
 +
 +# Skip some problematic graphs
-+IsoclassTests.graphs = [g for idx, g in enumerate(IsoclassTests.graphs) if idx not in set([70, 136])]
++IsoclassTests.graphs = [g for idx, g in enumerate(IsoclassTests.graphs) if idx not in set([136])]
  
  
  def suite():
