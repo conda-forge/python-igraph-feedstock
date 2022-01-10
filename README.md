@@ -9,6 +9,10 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/python-igraph-f
 
 Summary: High performance graph data structures and algorithms
 
+Development: https://github.com/igraph/python-igraph
+
+Documentation: https://igraph.org/python/#docs
+
 Current build status
 ====================
 
