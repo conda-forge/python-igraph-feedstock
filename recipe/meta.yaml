@@ -12,7 +12,7 @@ source:
   sha256: 6f9d8e1d6105b34298591820e94d4d8b3f33f38068523769e7a555bf7c96accb
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
