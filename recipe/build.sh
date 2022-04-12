@@ -5,9 +5,7 @@ export IGRAPH_CMAKE_EXTRA_ARGS="
     -GNinja
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_PREFIX_PATH=${BUILD_PREFIX} \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_INCLUDEDIR=include \
-    -DCMAKE_INSTALL_PREFIX=vendor/install/igraph \
+    -DCMAKE_INSTALL_PREFIX=${SRC_DIR}/vendor/install/igraph \
     -DCMAKE_C_FLAGS=\"${CFLAGS}\" \
     -DCMAKE_CPP_FLAGS=\"${CPPFLAGS}\" \
     -DCMAKE_CXX_FLAGS=\"${CXXFLAGS}\" \
