@@ -1,0 +1,38 @@
+From 8b25dd3db9d898e2f871988c2afe0841b4beeed7 Mon Sep 17 00:00:00 2001
+From: Vincent Traag <vincent@traag.net>
+Date: Wed, 13 Apr 2022 14:06:59 +0200
+Subject: [PATCH] fix: remove Py_LIMITED_API.
+
+---
+ src/_igraph/arpackobject.h | 1 -
+ src/_igraph/attributes.c   | 2 --
+ 2 files changed, 3 deletions(-)
+
+diff --git a/src/_igraph/arpackobject.h b/src/_igraph/arpackobject.h
+index 5d5fd31..64f036f 100644
+--- a/src/_igraph/arpackobject.h
++++ b/src/_igraph/arpackobject.h
+@@ -23,7 +23,6 @@
+ #ifndef PYTHON_ARPACKOBJECT_H
+ #define PYTHON_ARPACKOBJECT_H
+ 
+-#define Py_LIMITED_API 0x03060000
+ #include "preamble.h"
+ 
+ #include <igraph_arpack.h>
+diff --git a/src/_igraph/attributes.c b/src/_igraph/attributes.c
+index dcde72b..fae434e 100644
+--- a/src/_igraph/attributes.c
++++ b/src/_igraph/attributes.c
+@@ -20,8 +20,6 @@
+ 
+ */
+ 
+-#define Py_LIMITED_API 0x03060000
+-
+ #include "attributes.h"
+ #include "common.h"
+ #include "convert.h"
+-- 
+2.25.1
+
