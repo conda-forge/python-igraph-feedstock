@@ -1,6 +1,6 @@
 {% set name = "python-igraph" %}
 {% set pypiname = "igraph" %}
-{% set version = "0.9.10" %}
+{% set version = "0.9.11" %}
 
 package:
   name: {{ name|lower }}
@@ -9,12 +9,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
-  sha256: 6f9d8e1d6105b34298591820e94d4d8b3f33f38068523769e7a555bf7c96accb
-  patches:
-    - 0001-fix-remove-Py_LIMITED_API.patch
+  sha256: 52eeaf5c015e297d979fefc53038fbaaf5fff4fb5f5022dce43f3ddc78210515
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win and vc<14]
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
