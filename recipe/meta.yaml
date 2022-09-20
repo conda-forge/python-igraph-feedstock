@@ -27,7 +27,6 @@ requirements:
     - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - vs2017_{{ target_platform }}  # [win]
     - cmake
     - ninja
     - make  # [not win]
