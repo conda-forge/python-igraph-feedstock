@@ -43,6 +43,7 @@ requirements:
     - liblapack
     - python
     - pip
+    - zlib
   run:
     - glpk
     - libxml2
