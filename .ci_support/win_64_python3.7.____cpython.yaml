@@ -7,7 +7,7 @@ channel_targets:
 cxx_compiler:
 - vs2019
 glpk:
-- '4.65'
+- '5.0'
 libblas:
 - 3.9 *netlib
 liblapack:
@@ -22,6 +22,8 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
+  zlib:
+    max_pin: x.x
 python:
 - 3.7.* *_cpython
 suitesparse:
@@ -30,3 +32,5 @@ target_platform:
 - win-64
 vc:
 - '14'
+zlib:
+- '1.2'
