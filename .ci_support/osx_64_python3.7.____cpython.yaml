@@ -5,7 +5,7 @@ arpack:
 c_compiler:
 - clang
 c_compiler_version:
-- '13'
+- '14'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,9 +13,9 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '13'
+- '14'
 glpk:
-- '4.65'
+- '5.0'
 gmp:
 - '6'
 libblas:
@@ -38,6 +38,8 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
+  zlib:
+    max_pin: x.x
 python:
 - 3.7.* *_cpython
 suitesparse:
@@ -47,3 +49,5 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+zlib:
+- '1.2'
