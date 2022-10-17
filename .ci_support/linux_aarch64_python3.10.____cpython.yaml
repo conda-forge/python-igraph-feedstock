@@ -31,18 +31,8 @@ liblapack:
 libxml2:
 - '2.9'
 pin_run_as_build:
-  arpack:
-    max_pin: x.x.x
-  glpk:
-    max_pin: x.x
-  gmp:
-    max_pin: x
-  libxml2:
-    max_pin: x.x
   python:
     min_pin: x.x
-    max_pin: x.x
-  zlib:
     max_pin: x.x
 python:
 - 3.10.* *_cpython
