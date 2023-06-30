@@ -1,7 +1,7 @@
 diff -ruN igraph-0.10.4/setup.py igraph-0.10.4-patch/setup.py
 --- igraph-0.10.4/setup.py	2023-01-27 17:38:25.000000000 +0100
-+++ igraph-0.10.4-patch/setup.py	2023-06-30 20:19:09.091432620 +0200
-@@ -253,7 +253,7 @@
++++ igraph-0.10.4-patch/setup.py	2023-06-30 20:51:22.185228230 +0200
+@@ -253,10 +253,10 @@
  
          # No need to build tests
          args.append("-DBUILD_TESTING=OFF")
@@ -9,31 +9,30 @@ diff -ruN igraph-0.10.4/setup.py igraph-0.10.4-patch/setup.py
 +
          # Set install directory during config step instead of install step in order
          # to avoid having the architecture name in the LIBPATH (e.g. lib/x86_64-linux-gnu)
-         args.append("-DCMAKE_INSTALL_PREFIX=" + str(install_folder))
+-        args.append("-DCMAKE_INSTALL_PREFIX=" + str(install_folder))
++        # args.append("-DCMAKE_INSTALL_PREFIX=" + str(install_folder))
+ 
+         # Add any extra CMake args from environment variables
+         if "IGRAPH_CMAKE_EXTRA_ARGS" in os.environ:
 @@ -265,6 +265,9 @@
          # Finally, add the source folder path
          args.append(str(build_to_source_folder))
  
 +        print('Running CMake:')
-+        print(' '.join(args))
++        print('\n  '.join(args))
 +
          retcode = subprocess.call(args)
          if retcode:
              return False
-@@ -288,7 +291,21 @@
+@@ -288,7 +291,16 @@
          if retcode:
              return False
  
 -        for candidate in install_folder.rglob("igraph.pc"):
++        # conda-forge install folder
++        install_folder = Path(os.environ['PREFIX'])
++
 +        print(install_folder)
-+
-+        print('glob non-recursive:')
-+        for candidate in install_folder.glob("*"):
-+            print(candidate)
-+
-+        print('glob recursive:')
-+        for candidate in install_folder.glob("**/*"):
-+            print(candidate)
 +
 +        print('rglob:')
 +        for candidate in install_folder.rglob("*"):
