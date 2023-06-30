@@ -14,7 +14,7 @@ source:
     - 0001-xmlentity-for-libxml2-2.11.patch
 build:
   number: 1
-  skip: true  # [win and vc<14]
+  skip: true  # [not win or py<311]
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
