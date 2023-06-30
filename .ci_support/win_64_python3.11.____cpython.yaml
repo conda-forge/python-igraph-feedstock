@@ -24,7 +24,5 @@ suitesparse:
 - '5'
 target_platform:
 - win-64
-vc:
-- '14'
 zlib:
 - '1.2'
