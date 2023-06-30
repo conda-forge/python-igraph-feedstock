@@ -1,6 +1,6 @@
 diff -ruN igraph-0.10.4/setup.py igraph-0.10.4-patch/setup.py
 --- igraph-0.10.4/setup.py	2023-01-27 17:38:25.000000000 +0100
-+++ igraph-0.10.4-patch/setup.py	2023-06-30 19:46:33.311623019 +0200
++++ igraph-0.10.4-patch/setup.py	2023-06-30 20:19:09.091432620 +0200
 @@ -253,7 +253,7 @@
  
          # No need to build tests
@@ -10,7 +10,17 @@ diff -ruN igraph-0.10.4/setup.py igraph-0.10.4-patch/setup.py
          # Set install directory during config step instead of install step in order
          # to avoid having the architecture name in the LIBPATH (e.g. lib/x86_64-linux-gnu)
          args.append("-DCMAKE_INSTALL_PREFIX=" + str(install_folder))
-@@ -288,7 +288,21 @@
+@@ -265,6 +265,9 @@
+         # Finally, add the source folder path
+         args.append(str(build_to_source_folder))
+ 
++        print('Running CMake:')
++        print(' '.join(args))
++
+         retcode = subprocess.call(args)
+         if retcode:
+             return False
+@@ -288,7 +291,21 @@
          if retcode:
              return False
  
