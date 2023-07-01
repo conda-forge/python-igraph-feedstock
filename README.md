@@ -1,11 +1,11 @@
-About python-igraph
-===================
+About python-igraph-feedstock
+=============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/python-igraph-feedstock/blob/main/LICENSE.txt)
 
 Home: https://igraph.org/python/
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/python-igraph-feedstock/blob/main/LICENSE.txt)
 
 Summary: High performance graph data structures and algorithms
 
