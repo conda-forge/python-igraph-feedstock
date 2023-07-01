@@ -12,6 +12,7 @@ source:
   sha256: 4786e05919ee93f6479fe8ca697d68537edfe47549ed09dfb33bda4daced1fb9
   patches:
     - 0001-xmlentity-for-libxml2-2.11.patch
+    - 0002-win-no-posix-shlex.patch
 build:
   number: 1
   skip: true  # [win and vc<14]
