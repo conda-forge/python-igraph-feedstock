@@ -1,6 +1,6 @@
 {% set name = "python-igraph" %}
 {% set pypiname = "igraph" %}
-{% set version = "0.10.5" %}
+{% set version = "0.10.6" %}
 
 package:
   name: {{ name|lower }}
@@ -9,10 +9,8 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
-  sha256: d9c5f8972c544dfd8c315e1b4b9093f1994fa4f72745ae14c8850834d47557f9
-  patches:
-    - 0001-xmlentity-for-libxml2-2.11.patch
-    - 0002-win-no-posix-shlex.patch
+  sha256: 76f7aad294514412f835366a7d9a9c1e7a34c3e6ef0a6c3a1a835234323228e8
+
 build:
   number: 0
   skip: true  # [win and vc<14]
