@@ -12,7 +12,7 @@ source:
   sha256: 76f7aad294514412f835366a7d9a9c1e7a34c3e6ef0a6c3a1a835234323228e8
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
@@ -34,7 +34,6 @@ requirements:
   host:
     - glpk
     - libxml2
-    - suitesparse
     - arpack   # [not win]
     - gmp  # [not win]
     - mpir  # [win]
