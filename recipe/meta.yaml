@@ -11,6 +11,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
   sha256: c4053e47156d7685ad48bd72e6ff400d46b09deeebc746b96b5cf9737939fa2d
+  patches:
+    - 0001-disable-tests-with-intermittent-failures.patch
 
 build:
   number: 1
@@ -61,10 +63,7 @@ test:
     - igraph.drawing
     - igraph.remote
   commands:
-    # skip some tests that cause intermittent failures
-    {% set tests_to_skip = "tests.test_structural.CentralityTests.testAuthorityScore" %}
-    {% set tests_to_skip = tests_to_skip + " or tests.test_atlas.GraphAtlasTests.testHubScore" %}
-    - python -m unittest -v -k "not ({{ tests_to_skip }})"
+    - python -m unittest -v
 
 about:
   home: https://igraph.org/python/
