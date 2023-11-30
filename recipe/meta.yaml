@@ -15,7 +15,7 @@ source:
     - 0001-disable-tests-with-intermittent-failures.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
