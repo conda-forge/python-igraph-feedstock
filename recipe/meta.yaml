@@ -13,6 +13,7 @@ source:
   sha256: e55df60f882a51b8e8c1c5e7e940c5f90685d75634ea6df63bebcc983397adfa
   patches:
     - 0001-disable-tests-with-intermittent-failures.patch
+    - 0002_correct_libxml2212.patch
 
 build:
   number: 1
