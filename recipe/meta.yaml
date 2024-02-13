@@ -1,7 +1,7 @@
 {% set tests_to_skip = "tests.test_structural.CentralityTests.testAuthorityScore" %}
 {% set name = "python-igraph" %}
 {% set pypiname = "igraph" %}
-{% set version = "0.11.3" %}
+{% set version = "0.11.4" %}
 
 package:
   name: {{ name|lower }}
@@ -10,13 +10,13 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
-  sha256: e55df60f882a51b8e8c1c5e7e940c5f90685d75634ea6df63bebcc983397adfa
+  sha256: 2437ae0157af6824e2e65a23f7a1fa4fbf0f3664333c72aeca4fc01b83e18483
   patches:
     - 0001-disable-tests-with-intermittent-failures.patch
     - 0002_correct_libxml2212.patch
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win and vc<14]
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
