@@ -1,7 +1,7 @@
 {% set tests_to_skip = "tests.test_structural.CentralityTests.testAuthorityScore" %}
 {% set name = "python-igraph" %}
 {% set pypiname = "igraph" %}
-{% set version = "0.11.4" %}
+{% set version = "0.11.5" %}
 
 package:
   name: {{ name|lower }}
@@ -10,7 +10,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
-  sha256: 2437ae0157af6824e2e65a23f7a1fa4fbf0f3664333c72aeca4fc01b83e18483
+  sha256: 2d71d645a4c3344c5910543fabbae10d3163f46a3e824ba7753c14b9036b8233
   patches:
     - 0001-disable-tests-with-intermittent-failures.patch
 
@@ -29,6 +29,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - libtool  # [unix]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake
     - ninja
