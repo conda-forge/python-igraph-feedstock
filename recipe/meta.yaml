@@ -11,8 +11,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
   sha256: 837f233256c3319f2a35a6a80d94eafe47b43791ef4c6f9e9871061341ac8e28
-  patches:
-    - 0001-disable-tests-with-intermittent-failures.patch
+  # patches:
+  #   - 0001-disable-tests-with-intermittent-failures.patch
 
 build:
   number: 0
