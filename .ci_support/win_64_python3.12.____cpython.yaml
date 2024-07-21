@@ -10,6 +10,8 @@ cxx_compiler:
 - vs2019
 glpk:
 - '5.0'
+gmp:
+- '6'
 libblas:
 - 3.9 *netlib
 liblapack:
