@@ -37,8 +37,7 @@ requirements:
     - glpk
     - libxml2
     - arpack   # [not win]
-    - gmp  # [not win]
-    - gmp  # [win]
+    - gmp
     - libblas
     - liblapack
     - python
@@ -48,8 +47,7 @@ requirements:
     - glpk
     - libxml2
     - arpack  # [not win]
-    - gmp  # [not win]
-    - gmp  # [win]
+    - gmp
     - texttable >=1.6.2
     - python
 
