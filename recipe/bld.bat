@@ -20,5 +20,5 @@ set IGRAPH_CMAKE_EXTRA_ARGS=^
       -DIGRAPH_GRAPHML_SUPPORT=1
 set IGRAPH_EXTRA_LIBRARIES=gmp,blas,glpk,lapack,libxml2
 
-%PYTHON% -m pip install --no-deps --ignore-installed . -vvv
+%PYTHON% -m pip install --no-deps --no-build-isolation --ignore-installed . -vvv
 if errorlevel 1 exit 1
