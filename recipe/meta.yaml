@@ -28,6 +28,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
+    # just to make cmake happy
+    - bison  # [osx and arm64]
     - cmake
     - ninja
     - make  # [not win]
