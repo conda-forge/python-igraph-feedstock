@@ -1,7 +1,7 @@
 {% set tests_to_skip = "tests.test_structural.CentralityTests.testAuthorityScore" %}
 {% set name = "python-igraph" %}
 {% set pypiname = "igraph" %}
-{% set version = "0.11.6" %}
+{% set version = "0.11.8" %}
 
 package:
   name: {{ name|lower }}
@@ -9,13 +9,11 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
-  sha256: 837f233256c3319f2a35a6a80d94eafe47b43791ef4c6f9e9871061341ac8e28
-  patches:
-    - 0001-rename-pylong-asint-to-avoid-python-313-clash.patch
+  url: https://pypi.org/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
+  sha256: d7dc1404567ba3b0ea1bf8b5fa6e101617915c8ad11ea5a9f925a40bf4adad7d
 
 build:
-  number: 2
+  number: 0
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
@@ -30,6 +28,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
+    # just to make cmake happy
+    - bison  # [osx and arm64]
     - cmake
     - ninja
     - make  # [not win]
@@ -43,7 +43,7 @@ requirements:
     - liblapack
     - python
     - pip
-    - setuptools
+    - setuptools >=64,<72.2.0
     - zlib
   run:
     - glpk
