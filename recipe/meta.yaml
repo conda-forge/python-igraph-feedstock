@@ -13,7 +13,7 @@ source:
   sha256: c57ce44873abcfcfd1d61d7d261e416d352186958e7b5d299cf244efa6757816
 
 build:
-  number: 1
+  number: 2
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
@@ -36,7 +36,7 @@ requirements:
     - pkg-config  # [not win]
   host:
     - glpk
-    - libxml2
+    - libxml2-devel
     - arpack   # [not win]
     - gmp
     - libblas
@@ -47,7 +47,7 @@ requirements:
     - zlib
   run:
     - glpk
-    - libxml2
+    - libxml2-devel
     - arpack  # [not win]
     - gmp
     - texttable >=1.6.2
