@@ -52,6 +52,7 @@ requirements:
     - gmp
     - texttable >=1.6.2
     - python
+    - igraph >=0.10,<0.11
 
 test:
   source_files:
