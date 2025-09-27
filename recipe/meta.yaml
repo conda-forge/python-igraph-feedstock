@@ -28,6 +28,16 @@ requirements:
     - pip
     - setuptools >=64,<72.2.0
     - igraph >=0.10,<0.11
+    # Windows requires additional libs for pkg-config to work because igraph.pc
+    # lists them in Libs
+    - arpack  # [win]
+    - glpk  # [win]
+    - gmp  # [win]
+    - libblas  # [win]
+    - libiconv  # [win]
+    - liblapack  # [win]
+    - liblzma-devel  # [win]
+    - libxml2-devel  # [win]
   run:
     - python
     - texttable >=1.6.2
