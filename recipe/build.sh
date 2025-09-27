@@ -1,26 +1,10 @@
 #!/bin/env bash
 
-export IGRAPH_CMAKE_EXTRA_ARGS="
-    ${CMAKE_ARGS} \
-    -GNinja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=${SRC_DIR}/vendor/install/igraph \
-    -DCMAKE_C_FLAGS=\"${CFLAGS}\" \
-    -DCMAKE_CPP_FLAGS=\"${CPPFLAGS}\" \
-    -DCMAKE_CXX_FLAGS=\"${CXXFLAGS}\" \
-    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-    -DF2C_EXTERNAL_ARITH_HEADER=${F2C_EXTERNAL_ARITH_HEADER} \
-    -DIGRAPH_USE_INTERNAL_BLAS=0 \
-    -DIGRAPH_USE_INTERNAL_LAPACK=0 \
-    -DIGRAPH_USE_INTERNAL_ARPACK=0 \
-    -DIGRAPH_USE_INTERNAL_GLPK=0 \
-    -DIGRAPH_USE_INTERNAL_CXSPARSE=0 \
-    -DIGRAPH_USE_INTERNAL_GMP=0 \
-    -DBUILD_SHARED_LIBS=OFF \
-    -DIGRAPH_ENABLE_LTO=AUTO \
-    -DIGRAPH_ENABLE_TLS=1 \
-    -DBLAS_LIBRARIES=\"${PREFIX}/lib/libblas${SHLIB_EXT}\" \
-    -DLAPACK_LIBRARIES=\"${PREFIX}/lib/liblapack${SHLIB_EXT}\"
-    "
+# Build python-igraph against the externally provided libigraph from conda-forge
+# Use pkg-config to discover headers and libraries.
+export IGRAPH_USE_PKG_CONFIG=1
+
+# Ensure pkg-config can find igraph.pc from the host env
+export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH}"
 
 ${PYTHON} -m pip install --no-deps --no-build-isolation --ignore-installed . -vvv
