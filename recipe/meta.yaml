@@ -2,6 +2,7 @@
 {% set name = "python-igraph" %}
 {% set pypiname = "igraph" %}
 {% set version = "0.11.9" %}
+{% set igraph_version = "0.10.16" %}
 
 package:
   name: {{ name|lower }}
@@ -14,7 +15,9 @@ source:
 
 build:
   number: 3
-
+  ignore_run_exports_from:
+    - igraph
+    
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
@@ -27,7 +30,7 @@ requirements:
     - python
     - pip
     - setuptools >=64,<72.2.0
-    - igraph >=0.10,<0.11
+    - igraph {{ igraph_version }}
     # Windows requires additional libs for pkg-config to work because igraph.pc
     # lists them in Libs
     - arpack  # [win]
@@ -40,6 +43,7 @@ requirements:
     - libxml2-devel  # [win]
   run:
     - python
+    - igraph {{ igraph_version }}
     - texttable >=1.6.2
 
 test:
