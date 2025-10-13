@@ -12,6 +12,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
   sha256: c57ce44873abcfcfd1d61d7d261e416d352186958e7b5d299cf244efa6757816
+  patches:
+    - 0001-win-unvendor-igraph.patch  # [win]
 
 build:
   number: 3

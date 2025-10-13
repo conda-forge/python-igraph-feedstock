@@ -1,0 +1,25 @@
+diff -ruN python-igraph-0.11.9/setup.py python-igraph-0.11.9-patch/setup.py
+--- python-igraph-0.11.9/setup.py	2025-06-11 02:02:53.000000000 +0200
++++ python-igraph-0.11.9-patch/setup.py	2025-10-13 15:31:02.911638088 +0200
+@@ -742,6 +742,21 @@
+         self.libraries = [opt[2:] for opt in opts if opt.startswith("-l")]
+         self.library_dirs = [opt[2:] for opt in opts if opt.startswith("-L")]
+         self.include_dirs = [opt[2:] for opt in opts if opt.startswith("-I")]
++
++        # On Windows with MSVC, conda-forge import libraries are typically named
++        # with a lib prefix (e.g. libxml2.lib, liblzma.lib, libiconv.lib), while
++        # pkg-config emits xml2, lzma, iconv (and sometimes z for zlib).
++        # Remap these to the expected names and drop unsupported ones.
++        if building_on_windows_msvc():
++            remap = {
++                "xml2": "libxml2",
++                "lzma": "liblzma",
++                "iconv": "libiconv",
++                "z": "zlib",
++            }
++            self.libraries = [remap.get(lib, lib) for lib in self.libraries]
++            # Remove libraries not meaningful for MSVC builds if present
++            self.libraries = [lib for lib in self.libraries if lib not in ("pthread", "gomp")]
+         return True
+ 
+     def print_build_info(self) -> None:
