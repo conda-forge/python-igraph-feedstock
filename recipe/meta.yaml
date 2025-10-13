@@ -19,6 +19,15 @@ build:
   number: 3
   ignore_run_exports_from:
     - igraph
+    - arpack  # [win]
+    - glpk  # [win]
+    - gmp  # [win]
+    - libblas  # [win]
+    - libiconv  # [win]
+    - liblapack  # [win]
+    - liblzma  # [win]
+    - libxml2  # [win]
+    - zlib  # [win]
 
 requirements:
   build:
