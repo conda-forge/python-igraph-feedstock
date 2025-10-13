@@ -19,7 +19,7 @@ build:
   number: 3
   ignore_run_exports_from:
     - igraph
-    
+
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
@@ -43,6 +43,7 @@ requirements:
     - liblapack  # [win]
     - liblzma-devel  # [win]
     - libxml2-devel  # [win]
+    - zlib  # [win]
   run:
     - python
     - igraph {{ igraph_version }}
