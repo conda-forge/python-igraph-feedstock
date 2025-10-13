@@ -25,8 +25,8 @@ build:
     - libblas  # [win]
     - libiconv  # [win]
     - liblapack  # [win]
-    - liblzma  # [win]
-    - libxml2  # [win]
+    - liblzma-devel   # [win]
+    - libxml2-devel   # [win]
     - zlib  # [win]
 
 requirements:
