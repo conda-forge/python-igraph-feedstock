@@ -1,7 +1,7 @@
 diff -ruN python-igraph-0.11.9/setup.py python-igraph-0.11.9-patch/setup.py
 --- python-igraph-0.11.9/setup.py	2025-06-11 02:02:53.000000000 +0200
-+++ python-igraph-0.11.9-patch/setup.py	2025-10-13 16:27:29.638189284 +0200
-@@ -742,6 +742,38 @@
++++ python-igraph-0.11.9-patch/setup.py	2025-10-13 16:59:24.668313144 +0200
+@@ -742,6 +742,42 @@
          self.libraries = [opt[2:] for opt in opts if opt.startswith("-l")]
          self.library_dirs = [opt[2:] for opt in opts if opt.startswith("-L")]
          self.include_dirs = [opt[2:] for opt in opts if opt.startswith("-I")]
@@ -15,7 +15,6 @@ diff -ruN python-igraph-0.11.9/setup.py python-igraph-0.11.9-patch/setup.py
 +            # based on availability.
 +            remap = {
 +                "xml2": "libxml2",
-+                "iconv": "libiconv",
 +                "z": "zlib",
 +            }
 +            libs = [remap.get(lib, lib) for lib in self.libraries]
@@ -32,6 +31,11 @@ diff -ruN python-igraph-0.11.9/setup.py python-igraph-0.11.9-patch/setup.py
 +
 +            if use_liblzma:
 +                libs = ["liblzma" if lib == "lzma" else lib for lib in libs]
++
++            # Drop iconv on MSVC; libxml2 on Windows typically does not need
++            # explicit linking against iconv, and missing import libs can
++            # break linking.
++            libs = [lib for lib in libs if lib != "iconv"]
 +
 +            # Remove libraries not meaningful for MSVC builds if present
 +            self.libraries = [
