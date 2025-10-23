@@ -1,7 +1,7 @@
 {% set tests_to_skip = "tests.test_structural.CentralityTests.testAuthorityScore" %}
 {% set name = "python-igraph" %}
 {% set pypiname = "igraph" %}
-{% set version = "0.11.9" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -10,10 +10,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
-  sha256: c57ce44873abcfcfd1d61d7d261e416d352186958e7b5d299cf244efa6757816
+  sha256: 2414d0be2e4d77ee5357807d100974b40f6082bb1bb71988ec46cfb6728651ee
 
 build:
-  number: 2
+  number: 0
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
