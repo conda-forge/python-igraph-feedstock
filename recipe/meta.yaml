@@ -13,21 +13,10 @@ source:
   url: https://pypi.org/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
   sha256: c57ce44873abcfcfd1d61d7d261e416d352186958e7b5d299cf244efa6757816
   patches:
-    - 0001-win-unvendor-igraph.patch  # [win]
+    - 0001-allow-pkgconf.patch
 
 build:
   number: 3
-  ignore_run_exports_from:
-    - igraph
-    - arpack  # [win]
-    - glpk  # [win]
-    - gmp  # [win]
-    - libblas  # [win]
-    - libiconv  # [win]
-    - liblapack  # [win]
-    - liblzma-devel   # [win]
-    - libxml2-devel   # [win]
-    - zlib  # [win]
 
 requirements:
   build:
@@ -36,23 +25,12 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - pkg-config
+    - pkgconf
   host:
     - python
     - pip
     - setuptools >=64,<72.2.0
     - igraph {{ igraph_version }}
-    # Windows requires additional libs for pkg-config to work because igraph.pc
-    # lists them in Libs
-    - arpack  # [win]
-    - glpk  # [win]
-    - gmp  # [win]
-    - libblas  # [win]
-    - libiconv  # [win]
-    - liblapack  # [win]
-    - liblzma-devel  # [win]
-    - libxml2-devel  # [win]
-    - zlib  # [win]
   run:
     - python
     - igraph {{ igraph_version }}
