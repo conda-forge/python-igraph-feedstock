@@ -3,21 +3,11 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge,conda-forge/label/python_rc
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2022
-glpk:
-- '5.0'
-gmp:
-- '6'
-libblas:
-- 3.9.* *netlib
-liblapack:
-- 3.9.* *netlib
-libxml2_devel:
-- '2.14'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -26,8 +16,3 @@ python:
 - 3.14.* *_cp314
 target_platform:
 - win-64
-zip_keys:
-- - python
-  - channel_sources
-zlib:
-- '1'

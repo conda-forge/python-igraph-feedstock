@@ -2,6 +2,7 @@
 {% set name = "python-igraph" %}
 {% set pypiname = "igraph" %}
 {% set version = "0.11.9" %}
+{% set igraph_version = "0.10.16" %}
 
 package:
   name: {{ name|lower }}
@@ -11,47 +12,29 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz
   sha256: c57ce44873abcfcfd1d61d7d261e416d352186958e7b5d299cf244efa6757816
+  patches:
+    - 0001-allow-pkgconf.patch
 
 build:
-  number: 2
-  script_env:
-    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
-
-  run_exports:
-    - {{ pin_subpackage("python-igraph", max_pin="x.x") }}
+  number: 3
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    # just to make cmake happy
-    - bison  # [osx and arm64]
-    - cmake
-    - ninja
-    - make  # [not win]
-    - pkg-config  # [not win]
+    - pkgconf
   host:
-    - glpk
-    - libxml2-devel
-    - arpack   # [not win]
-    - gmp
-    - libblas
-    - liblapack
     - python
     - pip
     - setuptools >=64,<72.2.0
-    - zlib
+    - igraph {{ igraph_version }}
   run:
-    - glpk
-    - libxml2-devel
-    - arpack  # [not win]
-    - gmp
-    - texttable >=1.6.2
     - python
+    - igraph {{ igraph_version }}
+    - texttable >=1.6.2
 
 test:
   source_files:
@@ -67,9 +50,7 @@ test:
 about:
   home: https://igraph.org/python/
   license: GPL-2.0-or-later
-  license_file:
-    - LICENSE
-    - vendor/source/igraph/ACKNOWLEDGEMENTS.md
+  license_file: LICENSE
   summary: High performance graph data structures and algorithms
   dev_url: https://github.com/igraph/python-igraph
   doc_url: https://igraph.org/python/#docs

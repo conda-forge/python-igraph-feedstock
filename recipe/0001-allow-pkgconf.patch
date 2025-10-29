@@ -1,0 +1,42 @@
+diff --git a/setup.py b/setup.py
+index a8d1c965a..7032cea16 100644
+--- a/setup.py
++++ b/setup.py
+@@ -408,6 +408,7 @@ class BuildConfiguration:
+         self.extra_objects = []
+         self.static_extension = False
+         self.use_pkgconfig = False
++        self._pkgconfig_bin = None
+         self.use_sanitizers = False
+         self.c_core_built = False
+         self.allow_educated_guess = True
+@@ -422,8 +423,18 @@ class BuildConfiguration:
+         and it knows about igraph or not."""
+         if self._has_pkgconfig is None:
+             if self.use_pkgconfig:
+-                _, exit_code = get_output_single_line(["pkg-config", "igraph"])
+-                self._has_pkgconfig = exit_code == 0
++                exit_code = None
++                for pkgconfig_bin in ["pkg-config", "pkgconf"]:
++                    _, exit_code = get_output_single_line([pkgconfig_bin, "igraph"])
++                    if exit_code == 0:
++                        self._pkgconfig_bin = pkgconfig_bin
++                        break
++                if exit_code == 0:
++                    print(f"Detected {self._pkgconfig_bin} as pkg-config variant.")
++                    self._has_pkgconfig = True
++                else:
++                    print("Not detected any pkg-config variant.")
++                    self._has_pkgconfig = False
+             else:
+                 self._has_pkgconfig = False
+         return self._has_pkgconfig
+@@ -731,7 +742,7 @@ class BuildConfiguration:
+         if not buildcfg.has_pkgconfig:
+             return False
+ 
+-        cmd = ["pkg-config", "igraph", "--cflags", "--libs"]
++        cmd = [self._pkgconfig_bin, "igraph", "--cflags", "--libs"]
+         if self.static_extension:
+             cmd += ["--static"]
+         line, exit_code = get_output_single_line(cmd)
