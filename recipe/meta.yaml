@@ -33,7 +33,6 @@ requirements:
     - igraph {{ igraph_version }}
   run:
     - python
-    - igraph {{ igraph_version }}
     - texttable >=1.6.2
 
 test:
