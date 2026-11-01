@@ -34,7 +34,8 @@ requirements:
   host:
     - python
     - pip
-    - setuptools >=64,<72.2.0
+    - setuptools >=64
+    - cmake >=3.18
     - igraph 1.0.0.*
   run:
     - python
