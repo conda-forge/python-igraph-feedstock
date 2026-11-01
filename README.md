@@ -283,6 +283,3 @@ Feedstock Maintainers
 * [@vtraag](https://github.com/vtraag/)
 * [@xylar](https://github.com/xylar/)
 
-
-<!-- dummy commit to enable rerendering -->
-
