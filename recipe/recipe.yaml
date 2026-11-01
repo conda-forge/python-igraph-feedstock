@@ -19,7 +19,7 @@ source:
     - 0001-allow-pkgconf.patch
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -35,8 +35,7 @@ requirements:
     - python
     - pip
     - setuptools >=64
-    - cmake >=3.18
-    - igraph 1.0.0.*
+    - igraph ${{ igraph_version }}.*
   run:
     - python
     - texttable >=1.6.2
