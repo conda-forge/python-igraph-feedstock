@@ -1,0 +1,69 @@
+schema_version: 1
+
+context:
+  tests_to_skip: tests.test_structural.CentralityTests.testAuthorityScore
+  name: python-igraph
+  pypiname: igraph
+  version: "1.0.0"
+  igraph_version: "1.0.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ pypiname[0] }}/${{ pypiname }}/${{ pypiname }}-${{ version }}.tar.gz
+  sha256: 2414d0be2e4d77ee5357807d100974b40f6082bb1bb71988ec46cfb6728651ee
+  file_name: ${{ name }}-${{ version }}.tar.gz
+  patches:
+    - 0001-allow-pkgconf.patch
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then: python
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - pkgconf
+  host:
+    - python
+    - pip
+    - setuptools >=64,<72.2.0
+    - igraph 1.0.0.*
+  run:
+    - python
+    - texttable >=1.6.2
+
+tests:
+  - python:
+      imports:
+        - igraph
+        - igraph.app
+        - igraph.drawing
+        - igraph.remote
+      pip_check: false
+  - files:
+      source:
+        - tests
+    script:
+      - python -m unittest -v
+
+about:
+  license: GPL-2.0-or-later
+  license_file: LICENSE
+  summary: High performance graph data structures and algorithms
+  homepage: https://igraph.org/python/
+  repository: https://github.com/igraph/python-igraph
+  documentation: https://igraph.org/python/#docs
+
+extra:
+  recipe-maintainers:
+    - sodre
+    - vtraag
+    - xylar
